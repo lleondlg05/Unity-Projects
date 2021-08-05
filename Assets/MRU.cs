@@ -6,8 +6,8 @@ public class MRU : MonoBehaviour
 {
     [Range(-8, 8)] public float initPosition;
     public float velocity;
-    public float maxRoadCounter;
-    private float counter;
+    public float maxMovementSeconds;
+    private float totalMovingSeconds;
 
     void Start()
     {
@@ -16,11 +16,11 @@ public class MRU : MonoBehaviour
 
     void Update()
     {
-        counter += Time.deltaTime;
+        totalMovingSeconds += Time.deltaTime;
 
-        if (counter <= maxRoadCounter)
+        if (totalMovingSeconds <= maxMovementSeconds)
         {
-            transform.Translate(Vector2.right * velocity * Time.deltaTime);
+            transform.position = new Vector2(initPosition, 0) + Vector2.right * velocity * totalMovingSeconds;
 
         }
     }
