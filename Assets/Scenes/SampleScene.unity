@@ -236,10 +236,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b456dd0b297adf4fb5f57da16a32ce5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initPosition: -8
-  velocity: 1
-  aceleration: 0
-  maxMovementSeconds: 12
+  initPosition: -4
+  initVelocity: 12
+  aceleration: -9.8
+  maxMovementSeconds: 2
+  movementDirection: 1
 --- !u!212 &611446114
 SpriteRenderer:
   m_ObjectHideFlags: 0
