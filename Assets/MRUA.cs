@@ -5,10 +5,11 @@ using UnityEngine;
 public class MRUA : MonoBehaviour
 {
     [Range(-8, 8)] public float initPosition;
-    public float velocity;
+    public float initVelocity;
     public float aceleration;
-    public float maxRoadCounter;
-    private float counter;
+    public float maxMovementSeconds;
+    public Direction movementDirection;
+    private float totalMovingSeconds;
 
     void Start()
     {
@@ -17,12 +18,23 @@ public class MRUA : MonoBehaviour
 
     void Update()
     {
-        counter += Time.deltaTime;
+        totalMovingSeconds += Time.deltaTime;
 
-        if (counter <= maxRoadCounter)
+        if (totalMovingSeconds <= maxMovementSeconds)
         {
-            transform.Translate(Vector2.right * velocity * Time.deltaTime);
+            transform.position = Vector2.right * (initPosition + initVelocity * totalMovingSeconds + 0.5f * aceleration * totalMovingSeconds * totalMovingSeconds);
+
+            //transform.position = 
+            //      Vector2.right * initPosition 
+            //    + Vector2.right * velocity * totalMovingSeconds 
+            //    + Vector2.right * 0.5f * aceleration * totalMovingSeconds * totalMovingSeconds;
+            
 
         }
+    }
+
+    public enum Direction
+    {
+        Right, Up
     }
 }
